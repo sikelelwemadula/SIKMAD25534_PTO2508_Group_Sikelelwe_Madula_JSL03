@@ -20,39 +20,45 @@ const initialTasks = [
   },
 ];
 
+
 //The addition of 3 more tasks to the initialTasks array
 const addTasks = [
   {
     id: 4,
     title: prompt("enter the title of the task"),
     description: prompt("enter the description of the task"),
-    status: prompt("Enter task status (todo, doing, done):").toLowerCase(),
+    // store result first in case user cancels (null) so we don't call toLowerCase on null
+    status: (() => {
+      const s = prompt("Enter task status (todo, doing, done):");
+      return s ? s.toLowerCase() : "";
+    })(),
   },
   {
     id: 5,
     title: prompt("enter the title of the task"),
     description: prompt("enter the description of the task"),
-    status: prompt("Enter task status (todo, doing, done):").toLowerCase(),
+    status: (() => {
+      const s = prompt("Enter task status (todo, doing, done):");
+      return s ? s.toLowerCase() : "";
+    })(),
   },
   {
     id: 6,
     title: prompt("enter the title of the task"),
     description: prompt("enter the description of the task"),
-    status: prompt("Enter task status (todo, doing, done):").toLowerCase(),
+    status: (() => {
+      const s = prompt("Enter task status (todo, doing, done):");
+      return s ? s.toLowerCase() : "";
+    })(),
   },
 ]; 
 
 // Merge addTasks into initialTasks
 initialTasks.push(...addTasks);
 
-console.log(initialTasks); // Shows all 6 tasks combined 
 
-// Keep asking until the user enters a valid status for all the tasks
-for (let i = 0; i < addTasks.length; i++) {
-  let status = addTasks[i].status;
-  while (status !== "todo" && status !== "doing" && status !== "done") {
-    alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
-    addTasks[i].status = prompt("Enter task status (todo, doing, done):").toLowerCase();
-    status = addTasks[i].status;
-  }
-}
+//Completed Tasks
+const completedTasks = initialTasks.filter(task => task.status === 'done');
+
+console.log('All tasks:', initialTasks);
+console.log('Completed tasks:', completedTasks);
