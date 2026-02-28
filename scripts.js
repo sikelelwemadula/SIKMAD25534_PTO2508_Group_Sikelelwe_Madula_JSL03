@@ -53,12 +53,20 @@ const addTasks = [
   },
 ]; 
 
+//Shortening the array
+while (initialTasks.length > 3) {
+  initialTasks.pop();
+}
+
 // Merge addTasks into initialTasks
 initialTasks.push(...addTasks);
 
 
 //Completed Tasks
 const completedTasks = initialTasks.filter(task => task.status === 'done');
+if (initialTasks.length >= 3) {
+    alert("There are enough tasks on your board, please check them in the console.");
+}
 
 console.log('All tasks:', initialTasks);
 console.log('Completed tasks:', completedTasks);
