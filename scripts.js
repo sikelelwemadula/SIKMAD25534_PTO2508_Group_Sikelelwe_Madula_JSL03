@@ -1,3 +1,4 @@
+//Inintial starter code with 3 tasks
 const initialTasks = [
   {
     id: 1,
@@ -29,8 +30,16 @@ const addTasks = [
     description: prompt("enter the description of the task"),
     // store result first in case user cancels (null) so we don't call toLowerCase on null
     status: (() => {
-      const s = prompt("Enter task status (todo, doing, done):");
-      return s ? s.toLowerCase() : "";
+      let s = "";
+      while (s !== "todo" && s !== "doing" && s !== "done") {
+        s = prompt("Enter task status (todo, doing, done):");
+        if (s === null) {
+          s = ""; // Handle user cancellation
+        } else {
+          s = s.toLowerCase();
+        }
+      }
+      return s;
     })(),
   },
   {
@@ -38,8 +47,16 @@ const addTasks = [
     title: prompt("enter the title of the task"),
     description: prompt("enter the description of the task"),
     status: (() => {
-      const s = prompt("Enter task status (todo, doing, done):");
-      return s ? s.toLowerCase() : "";
+      let s = "";
+      while (s !== "todo" && s !== "doing" && s !== "done") {
+        s = prompt("Enter task status (todo, doing, done):");
+        if (s === null) {
+          s = "";
+        } else {
+          s = s.toLowerCase();
+        }
+      }
+      return s;
     })(),
   },
   {
@@ -47,16 +64,26 @@ const addTasks = [
     title: prompt("enter the title of the task"),
     description: prompt("enter the description of the task"),
     status: (() => {
-      const s = prompt("Enter task status (todo, doing, done):");
-      return s ? s.toLowerCase() : "";
+      let s = "";
+      while (s !== "todo" && s !== "doing" && s !== "done") {
+        s = prompt("Enter task status (todo, doing, done):");
+        if (s === null) {
+          s = "";
+        } else {
+          s = s.toLowerCase();
+        }
+      }
+      return s;
     })(),
   },
-]; 
+];
+ 
 
 //Shortening the array
 while (initialTasks.length > 3) {
   initialTasks.pop();
 }
+
 
 // Merge addTasks into initialTasks
 initialTasks.push(...addTasks);
@@ -68,5 +95,8 @@ if (initialTasks.length >= 3) {
     alert("There are enough tasks on your board, please check them in the console.");
 }
 
+
+// Log the tasks to the console
 console.log('All tasks:', initialTasks);
 console.log('Completed tasks:', completedTasks);
+
