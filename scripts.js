@@ -28,18 +28,15 @@ const addTasks = [
     id: 4,
     title: prompt("enter the title of the task"),
     description: prompt("enter the description of the task"),
-    // store result first in case user cancels (null) so we don't call toLowerCase on null
     status: (() => {
-      let s = "";
-      while (s !== "todo" && s !== "doing" && s !== "done") {
+      let s;
+      while (true) {
         s = prompt("Enter task status (todo, doing, done):");
-        if (s === null) {
-          s = ""; // Handle user cancellation
-        } else {
-          s = s.toLowerCase();
+        if (s && ['todo', 'doing', 'done'].includes(s.toLowerCase())) {
+          return s.toLowerCase();
         }
+        alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
       }
-      return s;
     })(),
   },
   {
@@ -47,16 +44,14 @@ const addTasks = [
     title: prompt("enter the title of the task"),
     description: prompt("enter the description of the task"),
     status: (() => {
-      let s = "";
-      while (s !== "todo" && s !== "doing" && s !== "done") {
+      let s;
+      while (true) {
         s = prompt("Enter task status (todo, doing, done):");
-        if (s === null) {
-          s = "";
-        } else {
-          s = s.toLowerCase();
+        if (s && ['todo', 'doing', 'done'].includes(s.toLowerCase())) {
+          return s.toLowerCase();
         }
+        alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
       }
-      return s;
     })(),
   },
   {
@@ -64,16 +59,14 @@ const addTasks = [
     title: prompt("enter the title of the task"),
     description: prompt("enter the description of the task"),
     status: (() => {
-      let s = "";
-      while (s !== "todo" && s !== "doing" && s !== "done") {
+      let s;
+      while (true) {
         s = prompt("Enter task status (todo, doing, done):");
-        if (s === null) {
-          s = "";
-        } else {
-          s = s.toLowerCase();
+        if (s && ['todo', 'doing', 'done'].includes(s.toLowerCase())) {
+          return s.toLowerCase();
         }
+        alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
       }
-      return s;
     })(),
   },
 ];
